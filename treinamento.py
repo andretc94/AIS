@@ -22,4 +22,16 @@ def getImagemComId():
     return np.array(ids), faces
 
 ids, faces = getImagemComId()
-print(faces)
+# print(faces)
+
+print('Treinando...')
+eigenface.train(faces, ids)
+eigenface.write('classificadorEigen.yml')
+
+fisherface.train(faces, ids)
+fisherface.write('classificadorFisher.yml')
+
+lbph.train(faces, ids)
+lbph.write('classificadorLBPH.yml')
+
+print('Treinamento realizado com sucesso')
